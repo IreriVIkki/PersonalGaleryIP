@@ -17,12 +17,12 @@ class Category(models.Model):
         return self.name
 
 
-# class Image(models.Model):
-#     image = models.ImageField(upload_to='images/')
-#     name = models.CharField(max_length=50)
-#     description = models.TextField()
-#     location = models.ForeignKey(Location)
-#     category = models.ForeignKey(Category)
+class Image(models.Model):
+    image = models.ImageField(upload_to='images/')
+    name = models.CharField(max_length=50)
+    description = models.TextField()
+    location = models.ForeignKey(Location)
+    category = models.ForeignKey(Category)
 
-#     def __str__(self):
-#         return self.name
+    def __str__(self):
+        return self.name
