@@ -26,3 +26,6 @@ class GaleryTestCase(TestCase):
 
     def test_category_instance(self):
         self.assertTrue(isinstance(self.nature, categories))
+
+    def test_location_instance(self):
+        self.assertTrue(isinstance(self.nairobi, Location))
