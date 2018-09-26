@@ -23,6 +23,7 @@ class Image(models.Model):
     description = models.TextField()
     location = models.ForeignKey(Location)
     categoies = models.ManyToManyField(categories)
+    posted_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ['name']
@@ -31,6 +32,10 @@ class Image(models.Model):
     def delete_by_id(cls, id):
         img = cls.objects.filter(pk=id)
         img.delete()
+
+    @classmethod
+    def all_photos(cls):
+        return cls.objects.all()
 
     def __str__(self):
         return self.name
