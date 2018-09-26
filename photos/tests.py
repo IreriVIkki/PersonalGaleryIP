@@ -23,3 +23,6 @@ class GaleryTestCase(TestCase):
     # def a testcase for instance of the waterfall class
     def test_image_instance(self):
         self.assertTrue(isinstance(self.waterfall, Image))
+
+    def test_category_instance(self):
+        self.assertTrue(isinstance(self.nature, categories))
