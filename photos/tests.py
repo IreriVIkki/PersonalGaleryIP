@@ -40,3 +40,6 @@ class GaleryTestCase(TestCase):
     def test_delete_by_id(self):
         Image.delete_by_id(self.waterfall.id)
         self.assertIsNone(self.waterfall, None)
+
+    def test_categories(self):
+        self.assertEqual(len(self.waterfall.categoies.all()), 2)
