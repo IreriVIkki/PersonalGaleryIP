@@ -22,7 +22,7 @@ class Image(models.Model):
     name = models.CharField(max_length=50)
     description = models.TextField()
     location = models.ForeignKey(Location)
-    categoies = models.ManyToManyField(categories)
+    categories = models.ManyToManyField(categories)
     posted_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
