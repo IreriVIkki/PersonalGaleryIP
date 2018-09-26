@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 
@@ -14,9 +15,13 @@
     {% else %}
     <title>Galery Website</title>
     {% endif %}
+    {% block styles %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    {% endblock %}
 </head>
 
 <body>
+    {% include 'layout/nav.html' %}
     {% block content %}
     {% endblock content %}
 
