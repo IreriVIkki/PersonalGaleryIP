@@ -36,3 +36,7 @@ class GaleryTestCase(TestCase):
     def test_delete_image(self):
         self.waterfall.delete()
         self.assertTrue(len(Image.objects.all()) == 0)
+
+    def test_delete_by_id(self):
+        Image.delete_by_id(self.waterfall.id)
+        self.assertIsNone(self.waterfall, None)

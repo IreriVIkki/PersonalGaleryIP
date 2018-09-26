@@ -27,5 +27,10 @@ class Image(models.Model):
     class Meta:
         ordering = ['name']
 
+    @classmethod
+    def delete_by_id(cls, id):
+        img = cls.objects.filter(pk=id)
+        img.delete()
+
     def __str__(self):
         return self.name
