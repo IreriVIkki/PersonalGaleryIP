@@ -12,11 +12,13 @@ class GaleryTestCase(TestCase):
         self.nairobi.save()
         self.nature = categories(name='nature')
         self.nature.save()
+        self.wild = categories.objects.create(name='wild')
 
         self.waterfall = Image(
             name='waterfall', description='picture of a waterfall')
 
         self.waterfall.categoies.add(self.nature)
+        self.waterfall.categoies.add(self.wild)
         self.waterfall.location.add(self.nairobi)
         self.waterfall.save()
 
@@ -26,6 +28,7 @@ class GaleryTestCase(TestCase):
 
     def test_category_instance(self):
         self.assertTrue(isinstance(self.nature, categories))
+        self.assertTrue(isinstance(self.wild, categories))
 
     def test_location_instance(self):
         self.assertTrue(isinstance(self.nairobi, Location))
