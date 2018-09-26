@@ -24,5 +24,8 @@ class Image(models.Model):
     location = models.ForeignKey(Location)
     categoies = models.ManyToManyField(categories)
 
+    class Meta:
+        ordering = ['name']
+
     def __str__(self):
         return self.name

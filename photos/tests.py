@@ -32,3 +32,7 @@ class GaleryTestCase(TestCase):
 
     def test_location_instance(self):
         self.assertTrue(isinstance(self.nairobi, Location))
+
+    def test_delete_image(self):
+        self.waterfall.delete()
+        self.assertTrue(len(Image.objects.all()) == 0)
