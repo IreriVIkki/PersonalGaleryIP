@@ -10,7 +10,7 @@ class Location(models.Model):
         return self.location
 
 
-class Category(models.Model):
+class categories(models.Model):
     name = models.CharField(max_length=30)
 
     def __str__(self):
@@ -22,7 +22,7 @@ class Image(models.Model):
     name = models.CharField(max_length=50)
     description = models.TextField()
     location = models.ForeignKey(Location)
-    category = models.ForeignKey(Category)
+    categoies = models.ManyToManyField(categories)
 
     def __str__(self):
         return self.name
