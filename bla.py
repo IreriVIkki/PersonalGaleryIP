@@ -1,39 +1,19 @@
-from django.test import TestCase
-from .models import Image, categories, Location
 
 
-#  test categories class
-class TestCategories (TestCase):
-    def setUp(self):
-        self.nature = categories(name='nature')
-
-    def test_instance(self):
-        self.nature.save()
-        self.assertTrue(isinstance(self.nature, categories))
-
-
-class TestLocationClass (TestCase):
-    def setup(self):
-        self.nairobi = Location(location='nairobi')
-
-    def test_instance(self):
-        self.assertTrue(isinstance(self.nairobi, Location))
-
-
-class ImageTest(TestCase):
+class ImageTestClass(TestCase):
 
     # def class instance setup for the project
     def setUp(self):
-        self.nairobi = Location.objects.create(location='Nairobi')
-        self.nature = categories.objects.create(name='nature')
-        self.wild = categories.objects.create(name='wild')
+        # self.nairobi = Location.objects.create(location='Nairobi')
+        # self.nature = categories.objects.create(name='nature')
+        # self.wild = categories.objects.create(name='wild')
 
         self.waterfall = Image(
             name='waterfall', description='picture of a waterfall')
 
-        self.waterfall.categoies.add(self.nature)
-        self.waterfall.categoies.add(self.wild)
-        self.waterfall.location.add(self.nairobi)
+        # self.waterfall.categoies.add(self.nature)
+        # self.waterfall.categoies.add(self.wild)
+        # self.waterfall.location.add(self.nairobi)
 
     # def a testcase for instance of the waterfall class
     def test_instance(self):
@@ -61,3 +41,20 @@ class ImageTest(TestCase):
 
     #     self.waterfall.save()
     #     self.assertEqual(len(self.waterfall.categoies.all()), 4)
+
+
+from django.test import TestCase
+from .models import Image, categories, Location
+
+
+# Create your tests here.
+class ImageTestClass(TestCase):
+
+    # Set up method
+    def setUp(self):
+        self.waterfall = Image(
+            image='James', name='waterfall', description='image of a waterfall')
+
+    def test_instance(self):
+        self.waterfall.save()
+        self.assertTrue(isinstance(self.waterfall, ))
