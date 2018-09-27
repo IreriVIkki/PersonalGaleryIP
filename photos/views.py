@@ -1,13 +1,14 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from .models import Image
 
 # Create your views here.
 
 
 def home(request):
+    images = Image.all_photos()
     context = {
-        'title': 'Galery'
+        'title': 'Galery',
+        'images': images
     }
-
-    # a retun value must have a get method to it
     return render(request, 'home.html', context)
