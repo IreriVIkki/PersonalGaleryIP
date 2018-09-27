@@ -1,13 +1,25 @@
 {% extends 'layout/layout.html' %}
+{% load static %}
 {% block content %}
-<h1>Image Galery</h1>
+<div class="header">
+    <img class="header-img w-100 d-flex align-self-bottom" src="{% static 'img/headerbg.jpg' %}" alt="">
+    <div class="header-body jumbotron bg-transparent">
+        <div class="header-items">
+            <h2>Galery</h2>
+        </div>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</div>
 {% for image in images %}
 <a href="#{{image.name}}" id="click">
     <img id="{{image.name}}" class="w-25" src="{{image.image.url}}" alt="Image">
 </a>
 <div class="one-image">
     <div class="container">
-        <img id="{{image.name}}" class="w-100" src="{{image.image.url}}" alt="Image">
+        <img id="{{image.name}}" class="h-75 img-fluid" src="{{image.image.url}}" alt="Image">
         <h4>
             {{ image.name }}
         </h4>
