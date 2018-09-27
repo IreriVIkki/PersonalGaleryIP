@@ -37,5 +37,10 @@ class Image(models.Model):
     def all_photos(cls):
         return cls.objects.all()
 
+    @classmethod
+    @property
+    def all_categories(self, cls):
+        return categories.objects.filter(image=cls)
+
     def __str__(self):
         return self.name

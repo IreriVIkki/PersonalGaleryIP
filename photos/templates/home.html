@@ -5,5 +5,25 @@
 <a href="#{{image.name}}" id="click">
     <img id="{{image.name}}" class="w-25" src="{{image.image.url}}" alt="Image">
 </a>
+<div class="one-image">
+    <div class="container">
+        <img id="{{image.name}}" class="w-100" src="{{image.image.url}}" alt="Image">
+        <h4>
+            {{ image.name }}
+        </h4>
+        <p>
+            {{ image.description }}
+        </p>
+        <div>
+            {% for category in image.categories.all %}
+            <button class="btn ">#{{ category.name }}</button>
+            {% endfor %}
+        </div>
+        <div class="d-flex">
+            <span>{{ image.location }}</span>
+            <span>{{ image.posted_date }}</span>
+        </div>
+    </div>
+</div>
 {% endfor %}
 {% endblock content %}
