@@ -30,7 +30,7 @@ body {
 }
 
 .card {
-    border-color: #3a3a3a
+    border-color: none;
 }
 
 .one-image {
@@ -54,3 +54,23 @@ body {
 .modal-img {
     border-radius: 10px;
 }
+
+.modal-img-sm {
+    max-height: 50vh;
+    width: auto;
+}
+
+.modal-img-lg {
+    height: auto;
+    width: 100%;
+}
+
+.mod-name {
+    color: lightseagreen;
+}
+
+.mod-desc {
+    color: #aaa
+}
+
+.modal-in {}

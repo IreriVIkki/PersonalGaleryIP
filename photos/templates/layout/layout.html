@@ -21,6 +21,25 @@
 </head>
 
 <body>
+    <div class="header">
+        <img class="header-img w-100 d-flex align-self-bottom" src="{% static 'img/headerbg.jpg' %}" alt="">
+        <div class="header-body bg-transparent text-light">
+            {% include 'layout/nav.html' %}
+            <div class="header-items  jumbotron pt-2 bg-transparent">
+                <h1 class="display-3">Ireri Galery</h1>
+                <p class="mb-0">
+                    Beautiful Photo Galery
+                </p>
+                <p class="pb-3 mb-0">
+                    A collection of the best photos taken by various incredible photographers from all over the world
+                </p>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control flex-fill mr-4" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
     {% block content %}
     {% endblock content %}
 
