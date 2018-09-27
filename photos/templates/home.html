@@ -3,39 +3,52 @@
 {% block content %}
 <div class="header">
     <img class="header-img w-100 d-flex align-self-bottom" src="{% static 'img/headerbg.jpg' %}" alt="">
-    <div class="header-body jumbotron bg-transparent">
-        <div class="header-items">
-            <h2>Galery</h2>
-        </div>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </div>
-</div>
-{% for image in images %}
-<a href="#{{image.name}}" id="click">
-    <img id="{{image.name}}" class="w-25" src="{{image.image.url}}" alt="Image">
-</a>
-<div class="one-image">
-    <div class="container">
-        <img id="{{image.name}}" class="h-75 img-fluid" src="{{image.image.url}}" alt="Image">
-        <h4>
-            {{ image.name }}
-        </h4>
-        <p>
-            {{ image.description }}
-        </p>
-        <div>
-            {% for category in image.categories.all %}
-            <button class="btn ">#{{ category.name }}</button>
-            {% endfor %}
-        </div>
-        <div class="d-flex">
-            <span>{{ image.location }}</span>
-            <span>{{ image.posted_date }}</span>
+    <div class="header-body bg-transparent text-light">
+        {% include 'layout/nav.html' %}
+        <div class="header-items  jumbotron pt-2 bg-transparent">
+            <h1 class="display-3">Ireri Galery</h1>
+            <p class="mb-0">
+                Beautiful Photo Galery
+            </p>
+            <p class="pb-3 mb-0">
+                A collection of the best photos taken by various incredible photographers from all over the world
+            </p>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control flex-fill mr-4" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
         </div>
     </div>
 </div>
-{% endfor %}
+<div class="m-3 img-container card-columns">
+
+    {% for image in images %}
+
+    <div class="d-inline-block card image-box">
+        <a href="#{{image.name}}" id="click">
+            <img id="{{image.name}}" class="w-100 h-auto img-fluid" src="{{image.image.url}}" alt="Image">
+        </a>
+    </div>
+    <div class="one-image d-none">
+        <div class="container">
+            <img id="{{image.name}}" class="h-75 img-fluid" src="{{image.image.url}}" alt="Image">
+            <h4>
+                {{ image.name }}
+            </h4>
+            <p>
+                {{ image.description }}
+            </p>
+            <div>
+                {% for category in image.categories.all %}
+                <button class="btn ">#{{ category.name }}</button>
+                {% endfor %}
+            </div>
+            <div class="d-flex">
+                <span>{{ image.location }}</span>
+                <span>{{ image.posted_date }}</span>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 {% endblock content %}

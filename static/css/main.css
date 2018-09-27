@@ -1,5 +1,9 @@
 body {
-    background-color: #bbb
+    background-color: #bbb;
+}
+
+.bg-nav {
+    background-color: #3a3a3a
 }
 
 .header {
@@ -12,8 +16,17 @@ body {
 .header-body {
     position: absolute;
     top: 0%;
+    left: 0%;
     height: 100%;
     width: 100%;
+}
+
+.header-items {
+    margin: 0 8em;
+}
+
+.image-box {
+    width: calc(100% /3);
 }
 
 .one-image {
