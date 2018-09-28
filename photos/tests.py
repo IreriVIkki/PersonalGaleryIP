@@ -58,7 +58,24 @@ class ImageTest(TestCase):
     def test_delete_by_id(self):
         self.waterfall.save()
         Image.delete_by_id(self.waterfall.id)
-        self.assertIsNone(Image.objects.get(pk =self.waterfall.id), None)
+        self.assertTrue(len(Image.objects.all()) == 0)
 
+    def test_all_photos(self):
         self.waterfall.save()
-        self.assertEqual(len(self.waterfall.categories.all()), 4)
+        photos = Image.all_photos()
+        self.assertTrue(len(photos) > 0)
+
+    def test_filter_by_categories(self):
+        self.waterfall.save()
+        images = Image.filter_by_categories(self.wild)
+        self.assertTrue(len(images) > 0)
+
+    def test_filter_by_location(self):
+        self.waterfall.save()
+        images = Image.filter_by_location(self.nairobi)
+        self.assertTrue(len(images) > 0)
+
+    def test_filter_by_search_term(self):
+        self.waterfall.save()
+        images = Image.filter_by_search_term('waterfall')
+        self.assertTrue(len(images) > 0)
