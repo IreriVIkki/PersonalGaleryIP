@@ -29,8 +29,9 @@
             link</button>
         <div>
             {% for category in image.categories.all %}
-            <a href="/category/{{category.name}}" class="btn badge-pill px-3 my-2 btn-outline-success mx-2">#{{
-                category.name }}</a href="">
+            <a href="/category/{{category.name}}" class="btn badge-pill px-3 my-2 btn-outline-success mx-2">
+                <span>#{{ category.name }}</span>
+            </a>
             {% endfor %}
         </div>
         <div class="">

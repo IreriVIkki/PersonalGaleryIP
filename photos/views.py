@@ -25,12 +25,12 @@ def search_results(request):
         # get the data from the search input field
         search_term = request.GET.get('image')
         searched_images = Image.filter_by_search_term(search_term)
-        caption = f'{search_term}'
+        caption = f'Search results for {search_term}'
         if len(searched_images) == 0:
             searched_images = Image.all_photos()
             caption = 'No Results Found'
         search_context = {
-            'title': 'Galery',
+            'title': search_term,
             'images': searched_images,
             'caption': caption,
             'message': '',

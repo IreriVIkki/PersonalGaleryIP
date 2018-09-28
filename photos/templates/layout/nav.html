@@ -15,9 +15,11 @@
                     categories
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <!-- {% for category in categories.all %} -->
-                    <a class="dropdown-item" href="#">{{categories.first.name}}</a>
-                    <!-- {% endfor %} -->
+                    {% for category in image.categories.all %}
+                    <a href="/category/{{category.name}}" class="btn badge-pill px-3 my-2 btn-outline-success mx-2">
+                        <span>{{ category.name }}</span>
+                    </a>
+                    {% endfor %}
                 </div>
             </li>
             <li class="nav-item">
