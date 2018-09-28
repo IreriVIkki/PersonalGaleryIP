@@ -46,3 +46,20 @@ def search_results(request):
             'caption': 'You Did Not Search Anything'
         }
         return render(request, 'home.html', search_context)
+
+
+def category_results(request, cat_name):
+    # check if the input field exists and that ic contains data
+    searched_images = Image.filter_by_categories(cat_name)
+    caption = f'{cat_name}'
+    if len(searched_images) == 0:
+        searched_images = Image.all_photos()
+        caption = 'There Are No Images In This Category'
+    context = {
+        'title': 'Galery',
+        'images': searched_images,
+        'caption': caption,
+        'message': '',
+        'categories': categories
+    }
+    return render(request, 'search.html', context)
