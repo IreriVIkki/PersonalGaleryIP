@@ -17,7 +17,7 @@ class categories(models.Model):
         return self.name
 
 
-class Image(models.Model):
+class Image(models.Model, categories, Location):
     image = models.ImageField(upload_to='images/')
     name = models.CharField(max_length=50)
     description = models.TextField()
@@ -38,9 +38,14 @@ class Image(models.Model):
         return cls.objects.all()
 
     @classmethod
-    @property
-    def all_categories(self, cls):
-        return categories.objects.filter(image=cls)
+    def filter_by_categories(cls, search_cat):
+        cat = categories.objects.filter(name=search_cat)
+        return cls.objects.filter(categories=cat)
+
+    @classmethod
+    def filter_by_location(cls, search_loc):
+        loc = Location.objects.filter(location=search_loc)
+        return cls.objects.filter(location=loc)
 
     def __str__(self):
         return self.name
