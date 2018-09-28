@@ -17,3 +17,16 @@ $('.modal-img').click(function (e) {
     $(this).toggleClass('modal-img-sm');
     // $(selector).toggleClass(className);
 });
+
+function copytext(text) {
+
+    function handler(event) {
+        event.clipboardData.setData('text/plain', text);
+        event.preventDefault();
+        document.removeEventListener('copy', handler, true);
+    }
+
+    document.addEventListener('copy', handler, true);
+    document.execCommand('copy');
+
+}

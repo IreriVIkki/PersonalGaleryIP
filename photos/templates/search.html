@@ -1,0 +1,49 @@
+{% extends 'layout/layout.html' %}
+{% load static %}
+{% block content %}
+
+<div class="m-3 img-container card-columns">
+
+    {% for image in images %}
+
+    <div class="d-inline-block card image-box">
+        <a href="#{{image.name}}" class="d-nne" type="text" id="id" name="{{image.id}}" onclick="getId(this.id, this.name)">
+            <img class="w-100 h-auto img-fluid" src="{{image.image.url}}" alt="Image">
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% for image in images %}
+<div class="one-image d-none" id="modal{{ image.id }}">
+    <div class="container p-3 bg-dark text-light">
+        <div class="text-center">
+            <img id="{{image.name}}" class="img-fluid modal-img modal-img-sm" src="{{image.image.url}}" alt="Image">
+        </div>
+        <h4 class="mod-name mt-3 mb-2">
+            {{ image.name }}
+        </h4>
+        <p class="mod.desc mb-0 p-3">
+            {{ image.description }}
+        </p>
+        <button class="btn btn-secondary" value="http://localhost:8000{{image.image.url}}" onclick="copytext(this.value)">Copy
+            link</button>
+        <div>
+            {% for category in image.categories.all %}
+            <button class="btn badge-pill px-3 my-2 btn-outline-success mx-2">#{{ category.name }}</button>
+            {% endfor %}
+        </div>
+        <div class="">
+            <div class="d-flex justify-content-end font-italic">
+                <em class="text-secondary mr-2">Location: </em>
+                <span>{{ image.location }}</span>
+            </div>
+            <div class="d-flex justify-content-end font-italic">
+                <em class="text-secondary mr-2">Posted on: </em>
+                <span> {{ image.posted_date }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+<div class="overlay d-none"></div>
+{% endblock content %}
