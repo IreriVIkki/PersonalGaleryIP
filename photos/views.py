@@ -26,6 +26,9 @@ def search_results(request):
         search_term = request.GET.get('image')
         searched_images = Image.filter_by_search_term(search_term)
         caption = f'{search_term}'
+        if len(searched_images) == 0:
+            searched_images = Image.all_photos()
+            caption = 'No Results Found'
         search_context = {
             'title': 'Galery',
             'images': searched_images,
@@ -40,7 +43,6 @@ def search_results(request):
             'title': 'Galery',
             'images': images,
             'message': '',
-            'caption': 'No Results Found',
-            'categories': categories
+            'caption': 'You Did Not Search Anything'
         }
         return render(request, 'home.html', search_context)
