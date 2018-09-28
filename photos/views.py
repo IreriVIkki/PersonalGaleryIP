@@ -38,17 +38,9 @@ def search_results(request):
         images = Image.all_photos()
         search_context = {
             'title': 'Galery',
-            'images': searched_images,
+            'images': images,
             'message': '',
             'caption': 'No Results Found',
             'categories': categories
         }
-        return render(request, 'search.html', search_context)
-
-    images = Image.all_photos()
-    context = {
-        'title': 'Galery',
-        'images': images,
-        'categories': categories
-    }
-    return render(request, 'search.html', context)
+        return render(request, 'home.html', search_context)
