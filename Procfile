@@ -1,2 +1,1 @@
-web: gunicorn gallery.wsgi
-web: gunicorn gallery:app
+web: gunicorn galery.wsgi
